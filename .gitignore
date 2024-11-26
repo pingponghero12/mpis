@@ -1,6 +1,11 @@
-build/*
-!build/.gitkeep
-docs
-*.o
-*.d
-images/*.png
+homework1/build
+homework2/build
+
+homework1/images
+homework1/skibidi.png
+homework2/images
+
+homework1/data/*
+homework1/data_529508UL/*
+homework2/data/*
+
