@@ -7,5 +7,11 @@ pkgs.mkShell {
             statistics
             mersenne-random-pure64
         ]))
+
+		(pkgs.python3.withPackages (ps: with ps; [
+		    pandas
+		    matplotlib
+            scipy
+		  ]))
     ];
 }

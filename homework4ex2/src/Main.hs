@@ -1,6 +1,6 @@
 module Main where
 
-import Data.List (mapAccumL)
+import Data.List (foldl')
 import Functions
 import System.Random.Mersenne.Pure64 (PureMT, newPureMT, randomInt)
 
@@ -16,9 +16,17 @@ printToCSV results = do
 main :: IO ()
 main = do
   mt <- newPureMT
-  let k = 100
-  let ns = 5
+  let k = 10000
+  let ns = [100]
 
-  let (resultList, newMT) = example mt ns k
+  let (results, _) =
+        foldl'
+          ( \(acc, mt1) n ->
+              let (dupa, mt2) = example mt1 n k
+               in (acc ++ dupa, mt2)
+          )
+          ([], mt)
+          ns
+  let formatted = results
 
-  printToCSV resultList
+  printToCSV formatted
