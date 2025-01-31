@@ -1,6 +1,7 @@
 module Functions where
 
 import Data.List (sort)
+import Debug.Trace
 import System.Random.Mersenne.Pure64 (PureMT, newPureMT, randomInt)
 
 -- I love that gogle just shows System.Random.Mersenne(not PureMT) which was uploaded on 2011
@@ -20,19 +21,20 @@ sn mt n =
    in (tempSum + tempAdd, newMt)
 
 genWalks :: PureMT -> Int -> Int -> ([Int], PureMT)
+genWalks mt n 0 = ([], mt)
 genWalks mt n k =
   let (walk, mt1) = sn mt n
       (remainingWalks, mt2) = genWalks mt1 n (k - 1)
    in (walk : remainingWalks, mt2)
 
 -- Simulated CDF
-simCDF :: [Int] -> [(Int, Double)]
-simCDF walks =
+simCDF :: [Int] -> Int -> [(Int, Int, Double)]
+simCDF walks ns =
   let sorted = sort walks
       n = fromIntegral $ length walks
-   in [(x, fromIntegral (length $ filter (<= x) walks) / n) | x <- sorted]
+   in [(ns, x, fromIntegral (length $ filter (<= x) walks) / n) | x <- sorted]
 
-example :: PureMT -> Int -> Int -> ([(Int, Double)], PureMT)
+example :: PureMT -> Int -> Int -> ([(Int, Int, Double)], PureMT)
 example mt n k =
   let (walks, mt) = genWalks mt n k
-   in (simCDF walks, mt)
+   in (simCDF walks n, mt)

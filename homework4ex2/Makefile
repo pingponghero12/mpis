@@ -4,7 +4,7 @@ SRC_DIR := src
 BUILD_DIR := build
 
 all: $(BUILD_DIR)
-	cd $(BUILD_DIR) && ghc -o h4 -hidir . -odir . ../$(SRC_DIR)/Main.hs ../$(SRC_DIR)/Functions.hs
+	cd $(BUILD_DIR) && ghc -o h4 ../$(SRC_DIR)/Main.hs ../$(SRC_DIR)/Functions.hs
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
