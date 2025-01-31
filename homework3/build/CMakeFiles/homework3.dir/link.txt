@@ -1,1 +1,0 @@
-g++ -Wall -Wextra -Wpedantic CMakeFiles/homework3.dir/src/com_model.cpp.o CMakeFiles/homework3.dir/src/insertion_sort.cpp.o CMakeFiles/homework3.dir/src/main.cpp.o CMakeFiles/homework3.dir/src/max_load.cpp.o CMakeFiles/homework3.dir/src/mt19937.cpp.o -o homework3

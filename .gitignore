@@ -13,3 +13,5 @@ homework2/build
 haskellTry
 
 *build
+*.cache
+*.obsidian
