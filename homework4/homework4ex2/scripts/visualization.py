@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import norm
 import os
 
-df = pd.read_csv('data/asdf100.csv')
+df = pd.read_csv('data/asdf.csv')
 
 N_VALUES = sorted(df['n'].unique())  # [5, 10, ..., 30]
 
